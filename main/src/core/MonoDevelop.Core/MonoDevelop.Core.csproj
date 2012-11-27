@@ -10,6 +10,28 @@
     <AssemblyName>MonoDevelop.Core</AssemblyName>
     <RootNamespace>MonoDevelop.Core</RootNamespace>
   </PropertyGroup>
+  <Choose>
+    <When Condition=" Exists('c:\Program Files\Git\bin\git.exe') ">
+      <PropertyGroup>
+        <Git>c:\Program Files\Git\bin\git.exe</Git>
+      </PropertyGroup>
+    </When>
+    <When Condition=" Exists('c:\Program Files (x86)\Git\bin\git.exe') ">
+      <PropertyGroup>
+        <Git>c:\Program Files (x86)\Git\bin\git.exe</Git>
+      </PropertyGroup>
+    </When>
+    <When Condition=" Exists('/usr/bin/git') ">
+      <PropertyGroup>
+        <Git>/usr/bin/git</Git>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <Git>git</Git>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
@@ -437,8 +459,16 @@
     <EmbeddedResource Include="md1format.xml">
       <LogicalName>md1format.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="frameworks\framework_NET_4_5.xml">
+      <LogicalName>framework_NET_4_5.xml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="BeforeBuild">
+    <MakeDir Directories="$(OutputPath)" />
+    <Exec Command="&quot;$(Git)&quot; rev-parse HEAD &gt; $(BuildInfo)" WorkingDirectory="$(MSBuildProjectDirectory)" IgnoreExitCode="True" />
+    <Exec Command="&quot;$(Git)&quot; rev-parse HEAD &gt; $(VcRevision)" WorkingDirectory="$(MSBuildProjectDirectory)" IgnoreExitCode="True" />
+  </Target>
   <ItemGroup>
     <ProjectReference Include="..\MonoDevelop.Projects.Formats.MSBuild\MonoDevelop.Projects.Formats.MSBuild.csproj">
       <Project>{A437F1A3-78DF-4F00-8053-D32A8B1EB679}</Project>
