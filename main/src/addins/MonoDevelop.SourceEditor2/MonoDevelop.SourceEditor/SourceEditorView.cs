@@ -714,7 +714,7 @@ namespace MonoDevelop.SourceEditor
 			Document.MimeType = mimeType;
 			string text = null;
 			if (content != null) {
-				text = Mono.TextEditor.Utils.TextFileUtility.GetText (content, out hadBom, out encoding);
+				text = Mono.TextEditor.Utils.TextFileUtility.GetText (content, out encoding, out hadBom);
 				Document.Text = text;
 			}
 			this.CreateDocumentParsedHandler ();
@@ -959,7 +959,7 @@ namespace MonoDevelop.SourceEditor
 			ClipbardRingUpdated -= UpdateClipboardRing;
 
 			widget.TextEditor.Document.TextReplacing -= OnTextReplacing;
-			widget.TextEditor.Document.TextReplacing -= OnTextReplaced;
+			widget.TextEditor.Document.TextReplaced -= OnTextReplaced;
 			widget.TextEditor.Document.ReadOnlyCheckDelegate = null;
 			widget.TextEditor.Options.Changed -= HandleWidgetTextEditorOptionsChanged;
 
@@ -2155,7 +2155,7 @@ namespace MonoDevelop.SourceEditor
 		
 		public Gtk.TargetEntry[] DragTargets { 
 			get {
-				return (Gtk.TargetEntry[])ClipboardActions.CopyOperation.targetList;
+				return ClipboardActions.CopyOperation.TargetEntries;
 			}
 		}
 				
