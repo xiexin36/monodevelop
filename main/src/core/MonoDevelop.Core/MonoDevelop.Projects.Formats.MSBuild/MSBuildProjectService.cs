@@ -516,12 +516,12 @@ namespace MonoDevelop.Projects.Formats.MSBuild
 		
 		static string GetExeLocation (TargetRuntime runtime, string toolsVersion)
 		{
-			FilePath sourceExe = typeof(ProjectBuilder).Assembly.Location;
+			FilePath sourceExe = typeof(MSBuildProjectService).Assembly.Location;
 
 			if ((runtime is MsNetTargetRuntime) && int.Parse (toolsVersion.Split ('.')[0]) >= 4)
 				toolsVersion = "dotnet." + toolsVersion;
 
-			var exe = sourceExe.ParentDirectory.Combine ("MSBuild", toolsVersion, sourceExe.FileName);
+			var exe = sourceExe.ParentDirectory.Combine ("MSBuild", toolsVersion, "MonoDevelop.Projects.Formats.MSBuild.exe");
 			if (File.Exists (exe))
 				return exe;
 			
@@ -611,6 +611,8 @@ namespace MonoDevelop.Projects.Formats.MSBuild
 		{
 			if (type == typeof(bool))
 				return new MSBuildBoolDataType ();
+			else if (type == typeof(bool?))
+				return new MSBuildNullableBoolDataType ();
 			else
 				return base.CreateConfigurationDataType (type);
 		}
@@ -642,6 +644,37 @@ namespace MonoDevelop.Projects.Formats.MSBuild
 		}
 
 		public bool RawValue { get; private set; }
+	}
+
+	class MSBuildNullableBoolDataType: PrimitiveDataType
+	{
+		public MSBuildNullableBoolDataType (): base (typeof(bool))
+		{
+		}
+
+		internal protected override DataNode OnSerialize (SerializationContext serCtx, object mapData, object value)
+		{
+			return new MSBuildNullableBoolDataValue (Name, (bool?) value);
+		}
+
+		internal protected override object OnDeserialize (SerializationContext serCtx, object mapData, DataNode data)
+		{
+			var d = (DataValue)data;
+			if (string.IsNullOrEmpty (d.Value))
+				return (bool?) null;
+			return (bool?) String.Equals (d.Value, "true", StringComparison.OrdinalIgnoreCase);
+		}
+	}
+
+	class MSBuildNullableBoolDataValue : DataValue
+	{
+		public MSBuildNullableBoolDataValue (string name, bool? value)
+			: base (name, value.HasValue? (value.Value? "True" : "False") : null)
+		{
+			RawValue = value;
+		}
+
+		public bool? RawValue { get; private set; }
 	}
 	
 	public class MSBuildResourceHandler: IResourceHandler

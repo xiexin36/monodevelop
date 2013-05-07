@@ -91,10 +91,45 @@ namespace Mono.Debugging.Client
 				adjustedLine = newLine;
 			}
 		}
-		
+
+		/// <summary>
+		/// Increments the hit count.
+		/// </summary>
+		/// <returns><c>true</c> if the break event should trigger, or <c>false</c> otherwise.</returns>
+		public bool HitCountReached
+		{
+			get {
+				switch (BreakEvent.HitCountMode) {
+				case HitCountMode.LessThan:
+					return BreakEvent.CurrentHitCount < BreakEvent.HitCount;
+				case HitCountMode.LessThanOrEqualTo:
+					return BreakEvent.CurrentHitCount <= BreakEvent.HitCount;
+				case HitCountMode.EqualTo:
+					return BreakEvent.CurrentHitCount == BreakEvent.HitCount;
+				case HitCountMode.GreaterThan:
+					return BreakEvent.CurrentHitCount > BreakEvent.HitCount;
+				case HitCountMode.GreaterThanOrEqualTo:
+					return BreakEvent.CurrentHitCount >= BreakEvent.HitCount;
+				case HitCountMode.MultipleOf:
+					return (BreakEvent.CurrentHitCount % BreakEvent.HitCount) == 0;
+				default:
+					return true;
+				}
+			}
+		}
+
+		public void IncrementHitCount ()
+		{
+			if (BreakEvent.HitCountMode != HitCountMode.None) {
+				BreakEvent.CurrentHitCount++;
+				BreakEvent.NotifyUpdate ();
+			}
+		}
+
+		[Obsolete ("Use IncrementHitCount() instead")]
 		public void UpdateHitCount (int count)
 		{
-			BreakEvent.HitCount = count;
+			BreakEvent.CurrentHitCount = count;
 			BreakEvent.NotifyUpdate ();
 		}
 		
