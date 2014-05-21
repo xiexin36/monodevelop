@@ -113,15 +113,16 @@ namespace MonoDevelop.Components.DockToolbars
 			}
 		}
 		
-		internal DockToolbarPosition Position {
+		public DockToolbarPosition Position {
 			get {
 				if (((IDockToolbar)this).Visible) return DockToolbarPosition.Create (this);
 				else if (lastPosition != null) return lastPosition;
 				else return defaultStatus.Position;
 			}
 		}
-		
-		internal DockToolbarStatus Status {
+
+        public DockToolbarStatus Status
+        {
 			get {
 				return new DockToolbarStatus (id, ((IDockToolbar)this).Visible, Position);
 			}
@@ -137,8 +138,9 @@ namespace MonoDevelop.Components.DockToolbars
 			}
 			
 		}
-		
-		internal DockToolbarStatus DefaultStatus {
+
+        public DockToolbarStatus DefaultStatus
+        {
 			get { return defaultStatus; }
 			set { defaultStatus = value; }
 		}

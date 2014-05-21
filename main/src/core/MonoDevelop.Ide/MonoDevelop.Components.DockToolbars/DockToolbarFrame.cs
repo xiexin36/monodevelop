@@ -237,7 +237,7 @@ namespace MonoDevelop.Components.DockToolbars
 			currentLayout = layout;
 		}
 		
-		internal void DeleteLayout (string layout)
+		public void DeleteLayout (string layout)
 		{
 			if (layouts.ContainsKey (layout))
 				layouts.Remove (layout);

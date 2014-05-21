@@ -40,7 +40,7 @@ using MonoDevelop.Ide.Gui.Content;
 
 namespace MonoDevelop.Ide.Gui
 {
-	internal class SdiWorkspaceWindow : EventBox, IWorkbenchWindow, ICommandDelegatorRouter
+	public class SdiWorkspaceWindow : EventBox, IWorkbenchWindow, ICommandDelegatorRouter
 	{
 		DefaultWorkbench workbench;
 		IViewContent content;

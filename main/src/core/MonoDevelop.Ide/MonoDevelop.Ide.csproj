@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -1129,6 +1129,7 @@
     <Compile Include="MonoDevelop.Ide.Commands\WindowCommands.cs" />
     <Compile Include="MonoDevelop.Ide.Gui\DisplayBindingService.cs" />
     <Compile Include="MonoDevelop.Ide.Gui\BackgroundProgressMonitor.cs" />
+    <Compile Include="MonoDevelop.Ide.Gui\IWorkbench.cs" />
     <Compile Include="MonoDevelop.Ide.Gui\StatusProgressMonitor.cs" />
     <Compile Include="MonoDevelop.Ide.Tasks\Task.cs" />
     <Compile Include="MonoDevelop.Ide.Tasks\TaskService.cs" />
@@ -1920,32 +1921,7 @@
     <Copy SourceFiles="@(Data)" DestinationFolder="..\..\..\build\data\%(Data.RelativeDir)" />
   </Target>
   <ItemGroup>
-    <Folder Include="MonoDevelop.Ide.CodeFormatting\" />
-    <Folder Include="MonoDevelop.Ide.Execution\" />
-    <Folder Include="MonoDevelop.Ide.Extensions\" />
-    <Folder Include="MonoDevelop.Ide.CustomTools\" />
-    <Folder Include="MonoDevelop.Components.Extensions\" />
-    <Folder Include="MonoDevelop.Components.Theming\" />
-    <Folder Include="MonoDevelop.Components.Docking\" />
-    <Folder Include="MonoDevelop.Ide.Gui\" />
-    <Folder Include="MonoDevelop.Ide.Desktop\" />
-    <Folder Include="MonoDevelop.Ide.Projects\" />
-    <Folder Include="MonoDevelop.Ide\" />
-    <Folder Include="MonoDevelop.Ide.Gui.Dialogs\" />
-    <Folder Include="MonoDevelop.Ide.Projects.OptionPanels\" />
     <Folder Include="MonoDevelop.Ide.NavigateToDialog\" />
-    <Folder Include="MonoDevelop.Ide.Navigation\" />
-    <Folder Include="MonoDevelop.Components.AutoTest\" />
-    <Folder Include="MonoDevelop.Ide.Fonts\" />
-    <Folder Include="MonoDevelop.Ide.Codons\" />
-    <Folder Include="ExtensionModel\" />
-    <Folder Include="icons\" />
-    <Folder Include="MonoDevelop.Ide.WelcomePage\" />
-    <Folder Include="branding\" />
-    <Folder Include="MonoDevelop.Components.MainToolbar\" />
-    <Folder Include="MonoDevelop.Components.MainToolbar\Theme\" />
-    <Folder Include="MonoDevelop.Ide.WelcomePage\icons\" />
-    <Folder Include="MonoDevelop.Ide.TextEditing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="gtkrc.win32">

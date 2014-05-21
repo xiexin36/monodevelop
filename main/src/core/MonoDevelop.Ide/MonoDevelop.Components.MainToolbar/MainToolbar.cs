@@ -48,7 +48,7 @@ using Mono.TextEditor;
 
 namespace MonoDevelop.Components.MainToolbar
 {
-	class MainToolbar: Gtk.EventBox, ICommandBar
+	public class MainToolbar: Gtk.EventBox, ICommandBar
 	{
 		const string ToolbarExtensionPath = "/MonoDevelop/Ide/CommandBar";
 		const int RuntimeExecutionTarget = 0;
@@ -455,7 +455,7 @@ namespace MonoDevelop.Components.MainToolbar
 
 		SearchPopupWindow popup = null;
 
-		public SearchPopupWindow SearchPopupWindow {
+		internal SearchPopupWindow SearchPopupWindow {
 			get {
 				return popup;
 			}

@@ -35,7 +35,7 @@ using System.Linq;
 
 namespace MonoDevelop.Components
 {
-	class Tabstrip : DrawingArea
+	public class Tabstrip : DrawingArea
 	{
 		static readonly Cairo.Color BackgroundGradientStart = new Cairo.Color (241d / 255d, 241d / 255d, 241d / 255d);
 		static readonly Cairo.Color BackgroundGradientEnd = BackgroundGradientStart;//new Cairo.Color (224d / 255d, 224d / 255d, 224d / 255d);
@@ -214,7 +214,7 @@ namespace MonoDevelop.Components
 		Right
 	}
 	
-	class Tab : IDisposable
+	public class Tab : IDisposable
 	{
 		internal static readonly int SpacerWidth = 8;
 		const int Padding = 6;

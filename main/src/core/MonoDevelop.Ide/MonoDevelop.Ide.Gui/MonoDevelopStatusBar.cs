@@ -41,7 +41,7 @@ using StockIcons = MonoDevelop.Ide.Gui.Stock;
 
 namespace MonoDevelop.Ide
 {
-	class MonoDevelopStatusBar : Gtk.HBox
+	public class MonoDevelopStatusBar : Gtk.HBox
 	{
 		Label modeLabel;
 		Label cursorLabel;

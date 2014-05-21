@@ -34,6 +34,7 @@ using MonoDevelop.Ide.Codons;
 using MonoDevelop.Core;
 using MonoDevelop.Components.Docking;
 using MonoDevelop.Components.Commands;
+using MonoDevelop.Ide.Gui;
 
 namespace MonoDevelop.Ide.Gui
 {
@@ -135,7 +136,7 @@ namespace MonoDevelop.Ide.Gui
 		event EventHandler PadDestroyed;
 	}
 	
-	internal class PadWindow: IPadWindow
+	public class PadWindow: IPadWindow
 	{
 		string title;
 		IconId icon;
@@ -144,11 +145,11 @@ namespace MonoDevelop.Ide.Gui
 		bool hasNewData;
 		IPadContent content;
 		PadCodon codon;
-		DefaultWorkbench workbench;
-		
-		internal DockItem Item { get; set; }
-		
-		internal PadWindow (DefaultWorkbench workbench, PadCodon codon)
+        IWorkbench workbench;
+
+        public DockItem Item { get; set; }
+
+        public PadWindow(IWorkbench workbench, PadCodon codon)
 		{
 			this.workbench = workbench;
 			this.codon = codon;
@@ -282,20 +283,20 @@ namespace MonoDevelop.Ide.Gui
 			// Don't create the content if not already created
 			return content as IMementoCapable;
 		}
-		
-		internal void NotifyShown ()
+
+        public void NotifyShown()
 		{
 			if (PadShown != null)
 				PadShown (this, EventArgs.Empty);
 		}
-		
-		internal void NotifyHidden ()
+
+        public void NotifyHidden()
 		{
 			if (PadHidden != null)
 				PadHidden (this, EventArgs.Empty);
 		}
-		
-		internal void NotifyContentShown ()
+
+        public void NotifyContentShown()
 		{
 			if (HasNewData)
 				HasNewData = false;
@@ -304,14 +305,14 @@ namespace MonoDevelop.Ide.Gui
 			if (PadContentShown != null)
 				PadContentShown (this, EventArgs.Empty);
 		}
-		
-		internal void NotifyContentHidden ()
+
+        public void NotifyContentHidden()
 		{
 			if (PadContentHidden != null)
 				PadContentHidden (this, EventArgs.Empty);
 		}
-		
-		internal void NotifyDestroyed ()
+
+        public void NotifyDestroyed()
 		{
 			if (PadDestroyed != null)
 				PadDestroyed (this, EventArgs.Empty);
@@ -323,6 +324,6 @@ namespace MonoDevelop.Ide.Gui
 		public event EventHandler PadContentHidden;
 		public event EventHandler PadDestroyed;
 		
-		internal event EventHandler StatusChanged;
+		public event EventHandler StatusChanged;
 	}
 }

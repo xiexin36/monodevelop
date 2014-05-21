@@ -38,9 +38,9 @@ using Xwt.Motion;
 
 namespace MonoDevelop.Ide.Gui
 {
-	delegate void TabsReorderedHandler (Widget widget, int oldPlacement, int newPlacement);
+	public delegate void TabsReorderedHandler (Widget widget, int oldPlacement, int newPlacement);
 
-	class DockNotebook : Gtk.VBox
+	public class DockNotebook : Gtk.VBox
 	{
 		List<IDockNotebookTab> pages = new List<IDockNotebookTab> ();
 		List<IDockNotebookTab> pagesHistory = new List<IDockNotebookTab> ();
@@ -163,7 +163,7 @@ namespace MonoDevelop.Ide.Gui
 			get { return tabStrip.BarHeight; }
 		}
 
-		internal void InitSize (Gtk.Window window)
+		public void InitSize (Gtk.Window window)
 		{
 			tabStrip.InitSize (window);
 		}
@@ -279,7 +279,7 @@ namespace MonoDevelop.Ide.Gui
 		}
 	}
 
-	interface IDockNotebookTab
+	public interface IDockNotebookTab
 	{
 		int Index { get; }
 		string Text { get; set; }
@@ -292,7 +292,7 @@ namespace MonoDevelop.Ide.Gui
 		bool Dirty { get; set; }
 	}
 
-	internal class DockNotebookTab: IDockNotebookTab, IAnimatable
+    public class DockNotebookTab : IDockNotebookTab, IAnimatable
 	{
 		DockNotebook notebook;
 		TabStrip strip;
@@ -401,12 +401,12 @@ namespace MonoDevelop.Ide.Gui
 		}
 	}
 
-	class TabEventArgs: EventArgs
+	public class TabEventArgs: EventArgs
 	{
 		public DockNotebookTab Tab { get; set; }
 	}
 
-	class TabStrip: EventBox, Xwt.Motion.IAnimatable
+	public class TabStrip: EventBox, Xwt.Motion.IAnimatable
 	{
 		List<Gtk.Widget> children = new List<Widget> ();
 		DockNotebook notebook;

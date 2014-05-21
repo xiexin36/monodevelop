@@ -28,7 +28,7 @@ using MonoDevelop.Components;
 
 namespace MonoDevelop.Ide.Gui
 {
-	static class Styles
+	public static class Styles
 	{
 		public static readonly Cairo.Color BaseBackgroundColor = new Cairo.Color (1, 1, 1);
 		public static readonly Cairo.Color BaseForegroundColor = new Cairo.Color (0, 0, 0);

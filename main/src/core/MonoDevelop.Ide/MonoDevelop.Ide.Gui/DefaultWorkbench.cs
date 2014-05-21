@@ -52,7 +52,7 @@ namespace MonoDevelop.Ide.Gui
 	/// <summary>
 	/// This is the a Workspace with a multiple document interface.
 	/// </summary>
-	internal class DefaultWorkbench : WorkbenchWindow, ICommandRouter
+    public class DefaultWorkbench : WorkbenchWindow, ICommandRouter, IWorkbench
 	{
 		readonly static string mainMenuPath    = "/MonoDevelop/Ide/MainMenu";
 		readonly static string appMenuPath    = "/MonoDevelop/Ide/AppMenu";
@@ -1398,7 +1398,7 @@ namespace MonoDevelop.Ide.Gui
 		}
 	}
 
-	class PadCommandRouterContainer: CommandRouterContainer
+	public class PadCommandRouterContainer: CommandRouterContainer
 	{
 		public PadCommandRouterContainer (PadWindow window, Gtk.Widget child, object target, bool continueToParent): base (child, target, continueToParent)
 		{
@@ -1408,7 +1408,7 @@ namespace MonoDevelop.Ide.Gui
 	// The SdiDragNotebook class allows redirecting the command route to the ViewCommandHandler
 	// object of the selected document, which implement some default commands.
 	
-	class SdiDragNotebook: DockNotebook, ICommandDelegatorRouter, ICommandBar
+	public class SdiDragNotebook: DockNotebook, ICommandDelegatorRouter, ICommandBar
 	{
 		public SdiDragNotebook ()
 		{
