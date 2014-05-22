@@ -161,6 +161,7 @@ namespace MonoDevelop.Ide.Codons
 			this.defaultPlacement = defaultPlacement;
 			this.icon             = icon;
 			this.defaultStatus    = defaultStatus;
+            this.defaultLayouts = new string[] { "*" };
 		}
 		
 		protected virtual IPadContent CreatePad ()

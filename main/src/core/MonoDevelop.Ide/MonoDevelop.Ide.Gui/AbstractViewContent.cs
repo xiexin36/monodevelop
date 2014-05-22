@@ -94,6 +94,10 @@ namespace MonoDevelop.Ide.Gui
 		public string PathRelativeToProject {
 			get { return Project == null ? null : FileService.AbsoluteToRelativePath (Project.BaseDirectory, ContentName); }
 		}
+        /// <summary>
+        /// CS_Xiexin ÊÇ·ñÄÜ¹»¹Ø±Õ
+        /// </summary>
+        public virtual bool CanClose { get; set; }
 
 		public virtual void Save ()
 		{

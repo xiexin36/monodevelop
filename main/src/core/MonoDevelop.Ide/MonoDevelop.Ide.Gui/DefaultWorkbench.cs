@@ -131,7 +131,7 @@ namespace MonoDevelop.Ide.Gui
 			get { return bottomBar; }
 		}
 		
-		internal IWorkbenchWindow ActiveWorkbenchWindow {
+		public IWorkbenchWindow ActiveWorkbenchWindow {
 			get {
 				if (tabControl == null || tabControl.CurrentTabIndex < 0 || tabControl.CurrentTabIndex >= tabControl.TabCount)  {
 					return null;
@@ -197,7 +197,7 @@ namespace MonoDevelop.Ide.Gui
 			}
 		}
 		
-		internal List<IViewContent> InternalViewContentCollection {
+		public List<IViewContent> InternalViewContentCollection {
 			get {
 				Debug.Assert(viewContentCollection != null);
 				return viewContentCollection;
@@ -1175,7 +1175,7 @@ namespace MonoDevelop.Ide.Gui
 			((SdiWorkspaceWindow)e.Tab.Content).CloseWindow (false, true);
 		}
 
-		internal void RemoveTab (int pageNum, bool animate)
+		public void RemoveTab (int pageNum, bool animate)
 		{
 			try {
 				// Weird switch page events are fired when a tab is removed.

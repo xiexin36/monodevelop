@@ -67,16 +67,16 @@ namespace MonoDevelop.Ide
 				EnsureStockIconIsLoaded (stockId, Gtk.IconSize.Menu);
 			};
 			
-			AddinManager.AddExtensionNodeHandler ("/MonoDevelop/Core/StockIcons", delegate (object sender, ExtensionNodeEventArgs args) {
-				StockIconCodon iconCodon = (StockIconCodon)args.ExtensionNode;
-				switch (args.Change) {
-				case ExtensionChange.Add:
-					if (!iconStock.ContainsKey (iconCodon.StockId))
-						iconStock[iconCodon.StockId] = new List<StockIconCodon> ();
-					iconStock[iconCodon.StockId].Add (iconCodon);
-					break;
-				}
-			});
+// 			AddinManager.AddExtensionNodeHandler ("/MonoDevelop/Core/StockIcons", delegate (object sender, ExtensionNodeEventArgs args) {
+// 				StockIconCodon iconCodon = (StockIconCodon)args.ExtensionNode;
+// 				switch (args.Change) {
+// 				case ExtensionChange.Add:
+// 					if (!iconStock.ContainsKey (iconCodon.StockId))
+// 						iconStock[iconCodon.StockId] = new List<StockIconCodon> ();
+// 					iconStock[iconCodon.StockId].Add (iconCodon);
+// 					break;
+// 				}
+// 			});
 			
 			for (int i = 0; i < iconSizes.Length; i++) {
 				int w, h;

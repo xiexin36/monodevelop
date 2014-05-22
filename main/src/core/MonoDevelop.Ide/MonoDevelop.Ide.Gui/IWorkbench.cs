@@ -17,5 +17,13 @@ namespace MonoDevelop.Ide.Gui
         void SetSticky(Codons.PadCodon codon, bool value);
 
         void ActivatePad(Codons.PadCodon codon, bool giveFocus);
+
+        void BringToFront(Codons.PadCodon pad, bool p);
+
+        List<IViewContent> InternalViewContentCollection { get; }
+
+        IWorkbenchWindow ActiveWorkbenchWindow { get; }
+
+        void RemoveTab(int p, bool animate);
     }
 }

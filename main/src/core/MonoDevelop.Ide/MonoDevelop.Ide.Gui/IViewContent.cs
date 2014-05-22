@@ -31,7 +31,7 @@ using MonoDevelop.Projects;
 namespace MonoDevelop.Ide.Gui
 {
     public interface IViewContent : IBaseViewContent
-	{
+    {
         Project Project { get; set; }
 
         string PathRelativeToProject { get; }
@@ -40,25 +40,29 @@ namespace MonoDevelop.Ide.Gui
         string StockIconId { get; }
 
         bool IsUntitled { get; }
-        bool IsViewOnly { get;  }
+        bool IsViewOnly { get; }
         bool IsFile { get; }
         bool IsDirty { get; set; }
         bool IsReadOnly { get; }
+        /// <summary>
+        /// CS_Xiexin 是否能够关闭
+        /// </summary>
+        bool CanClose { get; set; }
 
-        void Load (string fileName);
-		void LoadNew (System.IO.Stream content, string mimeType);
-        void Save (string fileName);
-        void Save ();
-		
-		/// <summary>
-		/// Discards all changes. This method is called before a dirty file is closed. It tells the view 
-		/// content to remove all autosave data of the file.
-		/// </summary>
-		void DiscardChanges ();
+        void Load(string fileName);
+        void LoadNew(System.IO.Stream content, string mimeType);
+        void Save(string fileName);
+        void Save();
+
+        /// <summary>
+        /// Discards all changes. This method is called before a dirty file is closed. It tells the view 
+        /// content to remove all autosave data of the file.
+        /// </summary>
+        void DiscardChanges();
 
         event EventHandler ContentNameChanged;
         event EventHandler ContentChanged;
         event EventHandler DirtyChanged;
         event EventHandler BeforeSave;
-	}
+    }
 }
