@@ -76,25 +76,21 @@ namespace MonoDevelop.Ide.Gui
 		public static readonly Cairo.Color DockTabBarShadowGradientStart = new Cairo.Color(0x74, 0x45, 0x98,1);
 		public static readonly Cairo.Color DockTabBarShadowGradientEnd = new Cairo.Color(0x74, 0x45, 0x98,0);
 
-		public static readonly Gdk.Color PadBackground = new Gdk.Color (0x33, 0x33, 0x33);
-//		public static readonly Gdk.Color PadBackground = new Gdk.Color (0x00, 0xff, 0xf6);
-//		public static readonly Gdk.Color PadBackground = new Gdk.Color (240, 240, 240);
+        public static readonly Gdk.Color PadBackground = new Gdk.Color (0x33,0x33,0x33);
 		public static readonly Gdk.Color InactivePadBackground = ReduceLight (PadBackground, 0.9);
-		public static readonly Gdk.Color PadLabelColor = new Gdk.Color (0x00,0xba,0xff);
-//		public static readonly Gdk.Color PadLabelColor = new Gdk.Color (92, 99, 102);
+        public static readonly Gdk.Color PadLabelColor = new Gdk.Color (0xff,0xff,0xff);
 		public static readonly Gdk.Color DockFrameBackground = new Gdk.Color (0x2f, 0x2f, 0x2f);//³ÈÉ«
 //		public static readonly Gdk.Color DockFrameBackground = new Gdk.Color (157, 162, 166);
 		public static readonly Gdk.Color DockSeparatorColor = ThinSplitterColor;
+        public static readonly Gdk.Color BrowserPadBackground = new Gdk.Color(0x44, 0x44, 0x44);
+        public static readonly Gdk.Color InactiveBrowserPadBackground = ReduceLight(BrowserPadBackground, 0.92);
 
-		public static readonly Gdk.Color BrowserPadBackground = new Gdk.Color (0xE5, 0xEC, 0xEE);
-		public static readonly Gdk.Color InactiveBrowserPadBackground = ReduceLight (BrowserPadBackground, 0.92);
+        public static readonly Cairo.Color DockBarBackground1 = PadBackground.ToCairoColor();
+        public static readonly Cairo.Color DockBarBackground2 = Shift(PadBackground.ToCairoColor(), 0.95);
+        public static readonly Cairo.Color DockBarSeparatorColorDark = new Cairo.Color(0, 0, 0, 0.2);
+        public static readonly Cairo.Color DockBarSeparatorColorLight = new Cairo.Color(1, 1, 1, 0.3);
 
-		public static readonly Cairo.Color DockBarBackground1 = PadBackground.ToCairoColor ();
-		public static readonly Cairo.Color DockBarBackground2 = Shift (PadBackground.ToCairoColor (), 0.95);
-		public static readonly Cairo.Color DockBarSeparatorColorDark = new Cairo.Color (0, 0, 0, 0.2);
-		public static readonly Cairo.Color DockBarSeparatorColorLight = new Cairo.Color (1, 1, 1, 0.3);
-
-		public static readonly Cairo.Color DockBarPrelightColor = CairoExtensions.ParseColor("ff007e");//Ãµºì
+        public static readonly Cairo.Color DockBarPrelightColor = CairoExtensions.ParseColor("ffffff");
 
 		// Status area
 
