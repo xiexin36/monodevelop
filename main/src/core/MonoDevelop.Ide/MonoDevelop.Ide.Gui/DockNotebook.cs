@@ -896,7 +896,7 @@ namespace MonoDevelop.Ide.Gui
         void UpdateTabWidth(int width, bool adjustLast = false)
         {
             if (notebook.Tabs.Any())
-                TargetWidth = Clamp(width / notebook.Tabs.Count, 50, 200);
+                TargetWidth = Clamp(width / notebook.Tabs.Count, 50, 100);
 
             if (adjustLast)
             {
