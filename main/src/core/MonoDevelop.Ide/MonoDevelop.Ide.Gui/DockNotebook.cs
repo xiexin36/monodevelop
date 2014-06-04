@@ -1158,8 +1158,8 @@ namespace MonoDevelop.Ide.Gui
                 }
                 else
                 {
-                    gr.AddColorStop(0, CairoExtensions.ParseColor("f4f4f4").MultiplyAlpha(tab.Opacity));
-                    gr.AddColorStop(1, CairoExtensions.ParseColor("cecece").MultiplyAlpha(tab.Opacity));
+                    gr.AddColorStop(0, CairoExtensions.ParseColor("333333").MultiplyAlpha(tab.Opacity));
+                    gr.AddColorStop(1, CairoExtensions.ParseColor("333333").MultiplyAlpha(tab.Opacity));
                 }
                 ctx.SetSource(gr);
             }
